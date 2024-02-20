@@ -24,4 +24,13 @@ echo "The arguments after $0 are $1 and $2"
 
 5- Write an Example of If else in Shell Scripting by comparing 2 numbers
 
+#!/bin/bash
+read -p "Enter the number: " number
+if [[ "$number" -ge 10 ]];
+then
+        echo "The $number is greater or equal then 10"
+else
+        echo "The $number is less then 10"
+fi
+
 
