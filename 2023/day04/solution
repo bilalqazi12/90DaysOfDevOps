@@ -1,0 +1,36 @@
+**Tasks**
+
+1- Explain in your own words and examples, what is Shell Scripting for DevOps.
+Shell scripting is a skill for Devops to automate repetitve tasks, manage system configurations, and enhance overall efficiecy in the software lifecycle.
+
+2- What is `#!/bin/bash?` can we write `#!/bin/sh` a?s well
+#!/bin/bash: It is called shebang or hashbang and it's used in shell scripts to specify the interpreter that should be used to execute the script.
+It indicates that the script should be interpreted and executed using the bash shell.
+Yes, it is also possible to use #!/bin/sh as the shebang line. The sh shell is a standard shell interpreter that is available on most Unix-like systems, and it is usually a symlink to another shell, such as Bash, Dash, or KornShell.
+
+3- Write a Shell Script which prints `I will complete #90DaysOofDevOps challenge`
+
+#!/bin/bash
+echo "I will complete #90DaysOofDevOps challenge"
+
+4- Write a Shell Script to take user input, input from arguments and print the variables.
+
+#!/bin/bash
+read -p "Enter username: " username
+echo "You entered $username"
+sudo useradd -m $username
+echo "New user added"
+echo "The arguments after $0 are $1 and $2"
+
+5- Write an Example of If else in Shell Scripting by comparing 2 numbers
+
+#!/bin/bash
+read -p "Enter the number: " number
+if [[ "$number" -ge 10 ]];
+then
+        echo "The $number is greater or equal then 10"
+else
+        echo "The $number is less then 10"
+fi
+
+
