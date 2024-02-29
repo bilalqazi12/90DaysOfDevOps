@@ -1,0 +1,60 @@
+- owner — The owner of the file or application.
+touch file.txt
+ls -l
+total 0
+-rw-rw-r-- 1 ubuntu ubuntu 0 Feb 28 19:03 file.txt
+
+- "chown" is used to change the ownership permission of a file or directory.
+
+ubuntu@ip-172-31-2-61:~/devops$ sudo useradd -m tahir
+ubuntu@ip-172-31-2-61:~/devops$ sudo groupadd linux
+ubuntu@ip-172-31-2-61:~/devops$ sudo chown tahir file.txt 
+ubuntu@ip-172-31-2-61:~/devops$ ls -l
+total 0
+-rw-rw-r-- 1 tahir ubuntu 0 Feb 28 19:03 file.txt
+
+- group — The group that owns the file or application.
+- "chgrp" is used to change the group permission of a file or directory.
+
+ubuntu@ip-172-31-2-61:~/devops$ sudo chgrp linux file.txt 
+ubuntu@ip-172-31-2-61:~/devops$ ls -l
+total 0
+-rw-rw-r-- 1 tahir linux 0 Feb 28 19:03 file.txt
+
+- "chmod" is used to change the other users permissions of a file or directory.
+
+ubuntu@ip-172-31-2-61:~/devops$ sudo chmod 700 file.txt 
+ubuntu@ip-172-31-2-61:~/devops$ ls -l
+total 0
+-rwx------ 1 tahir linux 0 Feb 28 19:03 file.txt
+
+
+3. Read about ACL and try out the commands `getfacl` and `setfacl`
+
+What is ACL?
+A network access control list (ACL) is made up of rules that either allow access to a computer environment or deny it. Access control lists are used for controlling permissions to a computer system or computer network. They are used to filter traffic in and out of a specific device. 
+
+getfacl:
+The getfacl command displays the access permissions of files and directories with file name, owner, group and the ACL's(Access Control List). When we create a directory it is created with a default set of access permissions and by using getfacl we will be able to see the access rights.
+ubuntu@ip-172-31-2-61:~/devops$ getfacl file.txt 
+# file: file.txt
+# owner: tahir
+# group: linux
+user::rwx
+group::---
+other::---
+
+setfacl:
+setfacl sets (replaces), modifies, or removes the access control list (ACL) to regular files and directories. It also updates and deletes ACL entries for each file and directory that was specified by path.
+ubuntu@ip-172-31-2-61:~/devops$ setfacl -m u:bilal:r file.txt 
+setfacl: file.txt: Operation not permitted
+ubuntu@ip-172-31-2-61:~/devops$ sudo setfacl -m u:bilal:r file.txt 
+ubuntu@ip-172-31-2-61:~/devops$ getfacl file.txt 
+# file: file.txt
+# owner: tahir
+# group: linux
+user::rwx
+user:bilal:r--
+group::---
+mask::r--
+other::---
